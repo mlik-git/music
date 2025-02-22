@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kopei</title>
+    <link rel="icon" href="images/icon.ico" type="image/x-icon">
+    <style>
+        :root {
+            --primary-color: #31c27c;
+            --bg-color: #f8f9fa;
+            --text-dark: #2c3e50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+            background: linear-gradient(135deg, var(--primary-color), #23855c);
+            color: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .download-list {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .download-item {
+            display: flex;
+            align-items: center;
+            padding: 1.2rem 2rem;
+            border-bottom: 1px solid #eee;
+            transition: background 0.2s;
+        }
+
+        .download-item:hover {
+            background: #f8f9fa;
+        }
+
+        .song-info {
+            flex: 1;
+            margin-right: 2rem;
+        }
+
+        .song-title {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .song-meta {
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+
+        .download-btn {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 12px rgba(49, 194, 124, 0.3);
+        }
+
+        .file-size {
+            margin-left: 1.5rem;
+            color: #95a5a6;
+            font-size: 0.9em;
+        }
+
+        .file-format {
+            background: #ecf0f1;
+            color: #7f8c8d;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85em;
+            margin-left: 1rem;
+        }
+            /* 添加在原有CSS中 */
+    .copyright-footer {
+        margin-top: 3rem;
+        padding: 2rem 0;
+        background: linear-gradient(135deg, #31c27c, #23855c);
+        color: rgba(255,255,255,0.8);
+        text-align: center;
+        font-size: 0.9em;
+        border-top: 1px solid #e0e0e0;
+    }
+
+    .copyright-footer p {
+        margin: 0.5rem 0;
+        line-height: 1.6;
+    }
+
+    .copyright-footer a {
+        color: rgba(255,255,255,0.9);
+        text-decoration: none;
+        border-bottom: 1px dashed;
+    }
+
+    .copyright-footer a:hover {
+        color: white;
+        border-bottom-style: solid;
+    }
+
+    @media (max-width: 768px) {
+        .copyright-footer {
+            font-size: 0.8em;
+            padding: 1.5rem 1rem;
+        }
+    }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Kopei高质量音乐下载</h1>
+            <p>立即获取您需要的音乐文件</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="download-list">
+            
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">1.晴天</div>
+                    <div class="song-meta">
+                        <span>周杰伦</span>
+                        <span> · </span>
+                        <span>04:29</span>
+                    </div>
+                </div>
+                    <span class="file-format">MP3</span>
+                    <span class="file-size">10.5MB</span>
+                    <a href="audio/晴天-周杰伦.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                    </a>
+                </div>
+
+            
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">2.如果当时</div>
+                    <div class="song-meta">
+                        <span>许嵩</span>
+                        <span> · </span>
+                        <span>05:16</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">12.1 MB</span>
+                <a href="audio/如果当时-许嵩.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">3.七里香</div>
+                    <div class="song-meta">
+                        <span>周杰伦</span>
+                        <span> · </span>
+                        <span>04.59</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">11.5MB</span>
+                <a href="audio/七里香-周杰伦.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">4.月牙湾</div>
+                    <div class="song-meta">
+                        <span>F.I.R.飞儿乐团</span>
+                        <span> · </span>
+                        <span>05:16</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">11.7 MB</span>
+                <a href="audio/月牙湾-F.I.R.飞儿乐团.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">5.你的微笑</div>
+                    <div class="song-meta">
+                        <span>F.I.R.飞儿乐团</span>
+                        <span> · </span>
+                        <span>04:21</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">10.0 MB</span>
+                <a href="audio/你的微笑-F.I.R.飞儿乐团.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">6.Fly Away</div>
+                    <div class="song-meta">
+                        <span>F.I.R.飞儿乐团</span>
+                        <span> · </span>
+                        <span>4:37</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">10.6 MB</span>
+                <a href="audio/Fly Away-F.I.R.飞儿乐团.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+            
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">7.Lydia</div>
+                    <div class="song-meta">
+                        <span>F.I.R.飞儿乐团</span>
+                        <span> · </span>
+                        <span>03:58</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">10.6 MB</span>
+                <a href="audio/Lydia-F.I.R.飞儿乐团.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">8.千年之恋</div>
+                    <div class="song-meta">
+                        <span>F.I.R.飞儿乐团</span>
+                        <span> · </span>
+                        <span>3:28</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">8.75 MB</span>
+                <a href="audio/千年之恋-F.I.R.飞儿乐团.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 在<body>标签结束前添加以下代码 -->
+    <footer class="copyright-footer">
+        <div class="container">
+            <p>© 2023 音乐下载中心 | 已累计提供 1,234 次安全下载 | 京ICP备2023000000号-1</p>
+            <p>免责声明：本站资源仅供学习交流，请于下载后24小时内删除</p>
+        </div>
+    </footer>
+
+
+    <!-- 可选：添加Font Awesome图标 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+</body>
+</html>
