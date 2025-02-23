@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kopei</title>
-    <link rel="icon" href="images/icon.ico" type="image/x-icon">
+    <link rel="icon" href="icon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #31c27c;
@@ -36,13 +38,53 @@
             padding: 2rem 0;
             background: linear-gradient(135deg, var(--primary-color), #23855c);
             color: white;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
         }
 
+        /* 搜索栏样式 */
+        .search-container {
+            background: #fff;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            gap: 10px;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid var(--primary-color);
+            border-radius: 30px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        #searchInput:focus {
+            box-shadow: 0 0 10px rgba(49, 194, 124, 0.3);
+        }
+
+        #searchBtn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        /* 下载列表样式 */
         .download-list {
             background: white;
             border-radius: 12px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
             overflow: hidden;
         }
 
@@ -85,11 +127,6 @@
             transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 3px 12px rgba(49, 194, 124, 0.3);
-        }
-
         .file-size {
             margin-left: 1.5rem;
             color: #95a5a6;
@@ -104,52 +141,49 @@
             font-size: 0.85em;
             margin-left: 1rem;
         }
-            /* 添加在原有CSS中 */
-    .copyright-footer {
-        margin-top: 3rem;
-        padding: 2rem 0;
-        background: linear-gradient(135deg, #31c27c, #23855c);
-        color: rgba(255,255,255,0.8);
-        text-align: center;
-        font-size: 0.9em;
-        border-top: 1px solid #e0e0e0;
-    }
 
-    .copyright-footer p {
-        margin: 0.5rem 0;
-        line-height: 1.6;
-    }
-
-    .copyright-footer a {
-        color: rgba(255,255,255,0.9);
-        text-decoration: none;
-        border-bottom: 1px dashed;
-    }
-
-    .copyright-footer a:hover {
-        color: white;
-        border-bottom-style: solid;
-    }
-
-    @media (max-width: 768px) {
+        /* 版权信息 */
         .copyright-footer {
-            font-size: 0.8em;
-            padding: 1.5rem 1rem;
+            margin-top: 3rem;
+            padding: 2rem 0;
+            background: linear-gradient(135deg, #31c27c, #23855c);
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            font-size: 0.9em;
         }
-    }
+
+        .no-results {
+            text-align: center;
+            padding: 2rem;
+            color: #95a5a6;
+            display: none;
+        }
     </style>
 </head>
+
 <body>
     <header class="header">
         <div class="container">
-            <h1>Kopei高质量音乐下载</h1>
+            <h1>Kopei高品质音乐资源下载</h1>
             <p>立即获取您需要的音乐文件</p>
         </div>
     </header>
 
+    <!-- 搜索栏 -->
+    <div class="search-container">
+        <div class="container">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="输入歌曲名称搜索...">
+                <button id="searchBtn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <div class="download-list">
-            
+
             <div class="download-item">
                 <div class="song-info">
                     <div class="song-title">1.晴天</div>
@@ -159,14 +193,14 @@
                         <span>04:29</span>
                     </div>
                 </div>
-                    <span class="file-format">MP3</span>
-                    <span class="file-size">10.5MB</span>
-                    <a href="audio/晴天-周杰伦.mp3" download class="download-btn">
+                <span class="file-format">MP3</span>
+                <span class="file-size">10.5MB</span>
+                <a href="audio/晴天-周杰伦.mp3" download class="download-btn">
                     <i class="fas fa-download"></i>
-                    </a>
-                </div>
+                </a>
+            </div>
 
-            
+
             <div class="download-item">
                 <div class="song-info">
                     <div class="song-title">2.如果当时</div>
@@ -177,7 +211,7 @@
                     </div>
                 </div>
                 <span class="file-format">MP3</span>
-                <span class="file-size">12.1 MB</span>
+                <span class="file-size">10.5 MB</span>
                 <a href="audio/如果当时-许嵩.mp3" download class="download-btn">
                     <i class="fas fa-download"></i>
                 </a>
@@ -246,7 +280,7 @@
                     <i class="fas fa-download"></i>
                 </a>
             </div>
-            
+
             <div class="download-item">
                 <div class="song-info">
                     <div class="song-title">7.Lydia</div>
@@ -269,7 +303,7 @@
                     <div class="song-meta">
                         <span>F.I.R.飞儿乐团</span>
                         <span> · </span>
-                        <span>3:28</span>
+                        <span>03:28</span>
                     </div>
                 </div>
                 <span class="file-format">MP3</span>
@@ -279,19 +313,775 @@
                 </a>
             </div>
 
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">9.简单爱</div>
+                    <div class="song-meta">
+                        <span>周杰伦</span>
+                        <span> · </span>
+                        <span>04:31</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">1.91 MB</span>
+                <a href="audio/简单爱-周杰伦.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">10.凑热闹</div>
+                    <div class="song-meta">
+                        <span>BY2</span>
+                        <span> · </span>
+                        <span>04:02</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">9.40 MB</span>
+                <a href="audio/凑热闹-BY2.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">11.桥边姑娘</div>
+                    <div class="song-meta">
+                        <span>海伦</span>
+                        <span> · </span>
+                        <span>3:03</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">7.03 MB</span>
+                <a href="audio/桥边姑娘-海伦.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">12.偏爱</div>
+                    <div class="song-meta">
+                        <span>张芸京</span>
+                        <span> · </span>
+                        <span>03:31</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">3.21 MB</span>
+                <a href="audio/偏爱-张芸京.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">13.陪我过个冬</div>
+                    <div class="song-meta">
+                        <span>李嘉嘉</span>
+                        <span> · </span>
+                        <span>02:37</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">2.41 MB</span>
+                <a href="audio/陪我过个冬-李嘉嘉.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">14.清明雨上</div>
+                    <div class="song-meta">
+                        <span>许嵩</span>
+                        <span> · </span>
+                        <span>003:37</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">5.34 MB</span>
+                <a href="audio/清明雨上-许嵩.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">15.爱情转移</div>
+                    <div class="song-meta">
+                        <span>陈奕迅</span>
+                        <span> · </span>
+                        <span>04:20</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">10.0 MB</span>
+                <a href="audio/爱情转移-陈奕迅.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">16.挪威的森林</div>
+                    <div class="song-meta">
+                        <span>伍佰</span>
+                        <span> · </span>
+                        <span>06:31</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">8.75 MB</span>
+                <a href="audio/挪威的森林-伍佰.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">17.平凡之路</div>
+                    <div class="song-meta">
+                        <span>朴树</span>
+                        <span> · </span>
+                        <span>05:01</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">11.6 MB</span>
+                <a href="audio/平凡之路-朴树.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">18.恋人心</div>
+                    <div class="song-meta">
+                        <span>魏新雨</span>
+                        <span> · </span>
+                        <span>03:26</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">7.91 MB</span>
+                <a href="audio/恋人心-魏新雨.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">19.歌唱祖国</div>
+                    <div class="song-meta">
+                        <span>中国人民解放军军乐团</span>
+                        <span> · </span>
+                        <span>01:27</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">3.37 MB</span>
+                <a href="audio/歌唱祖国-中国人民解放军军乐团.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">20.绿光</div>
+                    <div class="song-meta">
+                        <span>孙燕姿</span>
+                        <span> · </span>
+                        <span>03:13</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">7.49 MB</span>
+                <a href="audio/绿光-孙燕姿.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">21.菊花台</div>
+                    <div class="song-meta">
+                        <span>周杰伦</span>
+                        <span> · </span>
+                        <span>04:54</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">11.2 MB</span>
+                <a href="audio/菊花台-周杰伦.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">22.多余的解释</div>
+                    <div class="song-meta">
+                        <span>许嵩</span>
+                        <span> · </span>
+                        <span>04:37</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">10.6 MB</span>
+                <a href="audio/多余的解释-许嵩.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">23.有何不可</div>
+                    <div class="song-meta">
+                        <span>许嵩</span>
+                        <span> · </span>
+                        <span>04:01</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">9.28 MB</span>
+                <a href="audio/有何不可-许嵩.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">24.雅俗共赏</div>
+                    <div class="song-meta">
+                        <span>许嵩</span>
+                        <span> · </span>
+                        <span>04:09</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">9.40 MB</span>
+                <a href="audio/雅俗共赏-许嵩.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">25.天龙八部之宿敌</div>
+                    <div class="song-meta">
+                        <span>许嵩</span>
+                        <span> · </span>
+                        <span>04:24</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">10.1 MB</span>
+                <a href="audio/天龙八部之宿敌-许嵩.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">26.庐州月</div>
+                    <div class="song-meta">
+                        <span>许嵩</span>
+                        <span> · </span>
+                        <span>04:16</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">9.78 MB</span>
+                <a href="audio/庐州月-许嵩.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">27.断桥残雪</div>
+                    <div class="song-meta">
+                        <span>许嵩</span>
+                        <span> · </span>
+                        <span>03:17</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">8.30 MB</span>
+                <a href="audio/断桥残雪-许嵩.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">28.惊鸿一面</div>
+                    <div class="song-meta">
+                        <span>许嵩&黄龄</span>
+                        <span> · </span>
+                        <span>04:16</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">9.83 MB</span>
+                <a href="audio/惊鸿一面-许嵩&黄龄.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">29.灰色头像</div>
+                    <div class="song-meta">
+                        <span>许嵩</span>
+                        <span> · </span>
+                        <span>04:49</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">11.6 MB</span>
+                <a href="audio/灰色头像-许嵩.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">30.千百度</div>
+                    <div class="song-meta">
+                        <span>许嵩</span>
+                        <span> · </span>
+                        <span>03:46</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">8.56 MB</span>
+                <a href="audio/千百度-许嵩.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">31.素颜</div>
+                    <div class="song-meta">
+                        <span>许嵩&何曼婷</span>
+                        <span> · </span>
+                        <span>03:58</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">9.13 MB</span>
+                <a href="audio/素颜-许嵩&何曼婷.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">32.你若成风</div>
+                    <div class="song-meta">
+                        <span>许嵩</span>
+                        <span> · </span>
+                        <span>02:53</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">1.96 MB</span>
+                <a href="audio/你若成风-许嵩.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">33.半城烟沙</div>
+                    <div class="song-meta">
+                        <span>许嵩</span>
+                        <span> · </span>
+                        <span>04:53</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">3.84 MB</span>
+                <a href="audio/半城烟沙-许嵩.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">34.燕归巢</div>
+                    <div class="song-meta">
+                        <span>许嵩</span>
+                        <span> · </span>
+                        <span>04:54</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">11.3 MB</span>
+                <a href="audio/燕归巢-许嵩.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">35.野人</div>
+                    <div class="song-meta">
+                        <span>许嵩</span>
+                        <span> · </span>
+                        <span>04:04</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">9.40 MB</span>
+                <a href="audio/野人-许嵩.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">36.冬天的秘密</div>
+                    <div class="song-meta">
+                        <span>周传雄</span>
+                        <span> · </span>
+                        <span>04:32</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">10.5 MB</span>
+                <a href="audio/冬天的秘密-周传雄.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">37.关不上的窗</div>
+                    <div class="song-meta">
+                        <span>周传雄</span>
+                        <span> · </span>
+                        <span>04:35</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">11.3 MB</span>
+                <a href="audio/关不上的窗-周传雄.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">39.花香</div>
+                    <div class="song-meta">
+                        <span>周传雄</span>
+                        <span> · </span>
+                        <span>04:26</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">10.6 MB</span>
+                <a href="audio/花香-周传雄.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">40.蓝色土耳其</div>
+                    <div class="song-meta">
+                        <span>周传雄</span>
+                        <span> · </span>
+                        <span>04:43</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">10.8 MB</span>
+                <a href="audio/蓝色土耳其-周传雄.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">41.青花</div>
+                    <div class="song-meta">
+                        <span>周传雄</span>
+                        <span> · </span>
+                        <span>04:57</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">11.4 MB</span>
+                <a href="audio/青花-周传雄.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">42.蒲公英的约定</div>
+                    <div class="song-meta">
+                        <span>周杰伦</span>
+                        <span> · </span>
+                        <span>04:07</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">9.55 MB</span>
+                <a href="audio/蒲公英的约定-周杰伦.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">43.枫</div>
+                    <div class="song-meta">
+                        <span>周杰伦</span>
+                        <span> · </span>
+                        <span>04:35</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">10.5 MB</span>
+                <a href="audio/枫-周杰伦.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">44.兰亭序</div>
+                    <div class="song-meta">
+                        <span>周杰伦</span>
+                        <span> · </span>
+                        <span>04:13</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">9.84 MB</span>
+                <a href="audio/兰亭序-周杰伦.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">45.甜甜的</div>
+                    <div class="song-meta">
+                        <span>周杰伦</span>
+                        <span> · </span>
+                        <span>04:03</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">9.43 MB</span>
+                <a href="audio/甜甜的-周杰伦.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">46.轨迹</div>
+                    <div class="song-meta">
+                        <span>周杰伦</span>
+                        <span> · </span>
+                        <span>05:26</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">12.5 MB</span>
+                <a href="audio/轨迹-周杰伦.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">47.多余的解释</div>
+                    <div class="song-meta">
+                        <span>周杰伦</span>
+                        <span> · </span>
+                        <span>04:18</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">9.91 MB</span>
+                <a href="audio/反方向的钟-周杰伦.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">48.不能说的秘密</div>
+                    <div class="song-meta">
+                        <span>周杰伦</span>
+                        <span> · </span>
+                        <span>04:56</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">11.3 MB</span>
+                <a href="audio/不能说的秘密-周杰伦.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">49.告白气球</div>
+                    <div class="song-meta">
+                        <span>周杰伦</span>
+                        <span> · </span>
+                        <span>03:35</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">8.31 MB</span>
+                <a href="audio/告白气球-周杰伦.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">50.烟花易冷</div>
+                    <div class="song-meta">
+                        <span>周杰伦</span>
+                        <span> · </span>
+                        <span>04:22</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">10.0 MB</span>
+                <a href="audio/烟花易冷-周杰伦.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">51.给我一首歌的时间</div>
+                    <div class="song-meta">
+                        <span>周杰伦</span>
+                        <span> · </span>
+                        <span>04:13</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">9.82 MB</span>
+                <a href="audio/给我一首歌的时间-周杰伦.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">52.花海</div>
+                    <div class="song-meta">
+                        <span>周杰伦</span>
+                        <span> · </span>
+                        <span>04:24</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">9.60 MB</span>
+                <a href="audio/花海-周杰伦.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">53.半岛铁盒</div>
+                    <div class="song-meta">
+                        <span>周杰伦</span>
+                        <span> · </span>
+                        <span>05:19</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">12.2MB</span>
+                <a href="audio/半岛铁盒-周杰伦.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">54.明明就</div>
+                    <div class="song-meta">
+                        <span>周杰伦</span>
+                        <span> · </span>
+                        <span>04:20</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">10.0 MB</span>
+                <a href="audio/明明就-周杰伦.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="download-item">
+                <div class="song-info">
+                    <div class="song-title">55.搁浅</div>
+                    <div class="song-meta">
+                        <span>周杰伦</span>
+                        <span> · </span>
+                        <span>04:00</span>
+                    </div>
+                </div>
+                <span class="file-format">MP3</span>
+                <span class="file-size">9.25 MB</span>
+                <a href="audio/搁浅-周杰伦.mp3" download class="download-btn">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
+
         </div>
     </div>
 
-    <!-- 在<body>标签结束前添加以下代码 -->
+    <!-- 版权信息 -->
     <footer class="copyright-footer">
         <div class="container">
-            <p>© 2023 音乐下载中心 | 已累计提供 1,234 次安全下载 | 京ICP备2023000000号-1</p>
-            <p>免责声明：本站资源仅供学习交流，请于下载后24小时内删除</p>
+            <p>© 2025 音乐下载中心 | 已累计提供 114,514 次安全下载 | 浙ICP备2025022335号</p>
+            <p>免责声明：本站资源仅供学习交流，请勿用于商业</p>
         </div>
     </footer>
 
+    <script>
+        // 搜索功能实现
+        function performSearch() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const items = document.querySelectorAll('.download-item');
+            let foundCount = 0;
 
-    <!-- 可选：添加Font Awesome图标 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+            items.forEach(item => {
+                const title = item.querySelector('.song-title').textContent.toLowerCase();
+                const displayStyle = title.includes(searchTerm) ? 'flex' : 'none';
+                item.style.display = displayStyle;
+                if (displayStyle === 'flex') foundCount++;
+            });
+
+            document.querySelector('.no-results').style.display = foundCount === 0 ? 'block' : 'none';
+        }
+
+        document.getElementById('searchBtn').addEventListener('click', performSearch);
+        document.getElementById('searchInput').addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') performSearch();
+        });
+    </script>
 </body>
+
 </html>
