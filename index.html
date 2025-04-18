@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简洁音乐网站</title>
+    <link rel="icon" href="src/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+
+
+</head>
+<body>
+    <nav>
+        <img src="src/src.png" alt="网站Logo" style="height: 100px;">
+        <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="song.html">班歌</a></li>
+            <li><a href="#">关于</a></li>
+            <li><a href="#">举报</a></li>
+            <li><a href="#">支持</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="player">
+            <h1>音乐下载播放站</h1>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="搜索歌曲...">
+            </div>
+            <div class="song-list" id="song-list">
+                <!-- 歌曲列表将通过JavaScript动态生成 -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 初始化播放器
+        document.addEventListener('DOMContentLoaded', function() {
+            const songList = document.getElementById('song-list');
+
+            // 获取audio文件夹中的所有MP3文件
+            const mp3Files = [
+                'Five Hundred Miles-纯音乐.mp3',
+                'Fly Away-F.I.R.飞儿乐团.mp3',
+                'Soul seeker.mp3',
+                'You(=I).mp3',
+                'counting stars.mp3',
+                '七里香-周杰伦.mp3',
+                '不能说的秘密-周杰伦.mp3',
+                '东风破-周杰伦.mp3',
+                '你的万水千山-海来阿木.mp3',
+                '你的微笑-F.I.R.飞儿乐团.mp3',
+                '你若成风-许嵩.mp3',
+                '偏向-陈子晴.mp3',
+                '偏爱-张芸京.mp3',
+                '兰亭序-周杰伦.mp3',
+                '关不上的窗-周传雄.mp3',
+                '冬天的秘密-周传雄.mp3',
+                '凑热闹-BY2.mp3',
+                '刘德华 - 忘情水.mp3',
+                '千年之恋-F.I.R.飞儿乐团.mp3',
+                '千百度-许嵩.mp3',
+                '半城烟沙-许嵩.mp3',
+                '半岛铁盒-周杰伦.mp3',
+                '发如雪-周杰伦.mp3',
+                '听妈妈的话-周杰伦.mp3',
+                '告白气球-周杰伦.mp3',
+                '城府-许嵩.mp3',
+                '夜曲-周杰伦.mp3',
+                '大海-杨培安.mp3',
+                '如果当时-许嵩.mp3',
+                '姑娘别哭泣-柯柯柯啊.mp3',
+                '室内系的truckmaker.mp3',
+                '富士山下-陈奕迅.mp3',
+                '平凡之路-朴树.mp3',
+                '幻听-许嵩.mp3',
+                '庐州月-许嵩.mp3',
+                '张信哲 - 爱就一个字.mp3',
+                '张学友 - 一千个伤心的理由.mp3',
+                '张学友 - 如果这都不算爱.mp3',
+                '张杰、张碧晨 - 只要平凡.mp3',
+                '徐良、阿悄 - 犯贱.mp3',
+                '恋人心-魏新雨.mp3',
+                '惊鸿一面-许嵩&黄龄.mp3',
+                '想起了你-程响.mp3',
+                '挪威的森林-伍佰.mp3',
+                '搁浅-周杰伦.mp3',
+                '断桥残雪-许嵩.mp3',
+                '新娘不是我-程响.mp3',
+                '时光洪流-程响.mp3',
+                '明明就-周杰伦.mp3',
+                '星星点灯-郑智化.mp3',
+                '晴天-周杰伦.mp3',
+                '月牙湾-F.I.R.飞儿乐团.mp3',
+                '有何不可-许嵩.mp3',
+                '杨宗viewport - 这一路走来.mp3',
+                '林俊杰 - 美人鱼.mp3',
+                '桥边姑娘-海伦.mp3',
+                '清明雨上-许嵩.mp3',
+                '灰色头像-许嵩.mp3',
+                '烟花易冷-周杰伦.mp3',
+                '爱情转移-陈奕迅.mp3',
+                '爱的魔法.mp3',
+                '牧马城市.mp3',
+                '王妃-萧敬腾.mp3',
+                '玫瑰花的葬礼-许嵩.mp3',
+                '珊瑚海-周杰伦&Lara梁心颐.mp3',
+                '甜甜的-周杰伦.mp3',
+                '童年老家-马建涛.mp3',
+                '第一次爱的人-王心凌.mp3',
+                '简单爱-周杰伦.mp3',
+                '素颜-许嵩&何曼婷.mp3',
+                '红日-李克勤.mp3',
+                '给我一首歌的时间-周杰伦.mp3',
+                '绿光-孙燕姿.mp3',
+                '花海-周杰伦.mp3',
+                '花香-周传雄.mp3',
+                '莫文蔚 - 这世界那么多人.mp3',
+                '菊花台-周杰伦.mp3',
+                '蒲公英的约定-周杰伦.mp3',
+                '蓝色土耳其-周传雄.mp3',
+                '蜗牛-周杰伦.mp3',
+                '许嵩 - 断桥残雪.mp3',
+                '许巍 - 曾经的你.mp3',
+                '说好的幸福呢-周杰伦.mp3',
+                '说爱你-蔡依林.mp3',
+                '轨迹-周杰伦.mp3',
+                '野人-许嵩.mp3',
+                '陪我过个冬-李嘉嘉.mp3',
+                '雅俗共赏-许嵩.mp3',
+                '霍元甲-周杰伦.mp3',
+                '青花-周传雄.mp3',
+                '青花瓷-周杰伦.mp3',
+                '麻雀-李荣浩.mp3'
+            ];
+
+            // 生成歌曲列表
+            function renderSongList(files) {
+                songList.innerHTML = '';
+                files.forEach(file => {
+                // 从文件名中提取歌曲名（去掉.mp3后缀）
+                const songName = file.replace('.mp3', '');
+                const songElement = document.createElement('div');
+                songElement.className = 'song';
+                songElement.innerHTML = `
+                    <span>${songName}</span>
+                    <div class="song-actions">
+                        <button class="play-btn" data-file="audio/${file}">播放</button>
+                        <button class="download-btn" data-file="audio/${file}">下载</button>
+                    </div>
+                `;
+                    songList.appendChild(songElement);
+                });
+            }
+            
+            // 初始渲染
+            renderSongList(mp3Files);
+            
+            // 搜索功能
+            const searchInput = document.getElementById('search-input');
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const filteredFiles = mp3Files.filter(file => 
+                    file.toLowerCase().includes(searchTerm)
+                );
+                renderSongList(filteredFiles);
+            });
+
+            // 为歌曲列表添加事件委托
+            songList.addEventListener('click', (e) => {
+                if (e.target.classList.contains('play-btn')) {
+                    const file = e.target.getAttribute('data-file');
+                    const songName = e.target.parentElement.previousElementSibling.textContent;
+                    window.location.href = `player.html?song=${encodeURIComponent(file)}&name=${encodeURIComponent(songName)}`;
+                } else if (e.target.classList.contains('download-btn')) {
+                    const file = e.target.getAttribute('data-file');
+                    window.location.href = file;
+                }
+            });
+        });
+        
+    </script>
+</body>
+</html>
