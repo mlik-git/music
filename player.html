@@ -48,11 +48,12 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(10px);
             padding: 15px;
-            box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
+            box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+            display: block;
         }
 
         video, audio {
@@ -111,7 +112,11 @@
         }
 
         #audio-container.hidden, #video-container.hidden {
-            display: none;
+            display: none !important;
+        }
+
+        #audio-container, #video-container {
+            opacity: 1 !important;
         }
     </style>
 </head>
@@ -196,31 +201,47 @@
             }
             
             const backgroundType = document.querySelector('input[name="background-type"]:checked').value;
-            const imgPath = backgroundType === 'img' ? 'img/' : 'img-health/';
+            const imgPath = backgroundType === 'img' ? './img/' : './img-health/';
             const imgElement = document.getElementById('background');
             imgElement.style.display = 'none';
             
-            fetch(imgPath)
-                .then(response => response.text())
-                .then(text => {
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(text, 'text/html');
-                    const images = Array.from(doc.querySelectorAll('a'))
-                        .map(a => a.href)
-                        .filter(href => href.match(/\.(jpg|jpeg|png|gif|avif)$/i))
-                        .map(href => href.split('/').pop());
-                    
-                    if (images.length > 0) {
-                        const randomImage = images[Math.floor(Math.random() * images.length)];
-                        imgElement.src = imgPath + randomImage;
-                        imgElement.onload = () => imgElement.style.display = 'block';
-                    }
-                })
-                .catch(error => {
-                    console.error('背景图加载失败:', error);
-                    imgElement.style.display = 'none';
-                    document.body.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-                });
+            // 获取图片列表并随机选择一张
+            const getRandomImage = (directory) => {
+                const images = {
+                    'img': [
+                        '横图-3340x2080-1744527102073.avif',
+                        '横图-3508x2420-1744533154986.avif',
+                        '横图-3684x2200-1744527333601.avif',
+                        '横图-3750x2250-1744527394008.avif',
+                        '横图-3840x2160-1744526610392.avif'
+                    ],
+                    'img-health': [
+                        'beach-583172_640.jpg',
+                        'bridge-53769_640.jpg',
+                        'china-6796350_640.jpg',
+                        'coast-6067736_640.jpg',
+                        'forest-166733_640.jpg'
+                    ]
+                };
+                
+                const imageList = directory === './img/' ? images['img'] : images['img-health'];
+                return imageList[Math.floor(Math.random() * imageList.length)];
+            };
+            
+            const randomImage = getRandomImage(imgPath);
+            imgElement.src = imgPath + randomImage;
+            imgElement.onerror = () => {
+                console.error('背景图片加载失败');
+                imgElement.style.display = 'none';
+                document.body.style.background = 'linear-gradient(135deg, #4568dc 0%, #b06ab3 100%)';
+            };
+            imgElement.onload = () => {
+                imgElement.style.display = 'block';
+            };
+
+
+
+
         }
         
         loadBackgroundImage();
