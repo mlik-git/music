@@ -224,7 +224,7 @@
                 videoContainer.classList.remove('hidden');
                 audioContainer.classList.add('hidden');
                 const videoPlayer = document.getElementById('videoPlayer');
-                videoPlayer.src = 'video/Counting Stars (带歌词).mp4';
+                videoPlayer.src = 'video/' + decodeURIComponent(videoFile);
                 titleElement.textContent = decodeURIComponent(videoTitle);
                 videoPlayer.load();
                 videoPlayer.play().catch(error => {
@@ -257,7 +257,7 @@
             
             const images = {
                 'img': [
-                    '横图-10941x4327-1745060310703.avif',
+                    /*'横图-10941x4327-1745060310703.avif',
                     '横图-3340x2080-1744527102073.avif',
                     '横图-3508x2420-1744533154986.avif',
                     '横图-3684x2200-1744527333601.avif',
@@ -320,7 +320,7 @@
                     '横图-6750x4500-1745060432987.avif',
                     '横图-7254x3298-1744526627038.avif',
                     '横图-8640x4860-1744526535437.avif',
-                    '横图-10941x4327-1745060310703.avif'
+                    '横图-10941x4327-1745060310703.avif'*/
                 ],
                 'img-health': [
                     'beach-583172_640.jpg',

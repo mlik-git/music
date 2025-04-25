@@ -12,15 +12,16 @@
             margin: 20px auto;
             padding: 20px;
             display: flex;
-            gap: 30px;
-            flex-wrap: wrap;
-            justify-content: center;
+            gap: 20px;
+            flex-wrap: nowrap;
+            justify-content: space-between;
             align-items: stretch;
+            
         }
         .video-player {
             flex: 1;
-            min-width: 320px;
-            max-width: 580px;
+            min-width: 300px;
+            max-width: 380px;
             background: #fff;
             border-radius: 12px;
             padding: 15px;
@@ -47,6 +48,13 @@
         }
     </style>
 </head>
+<script>
+function playVideo(videoFile, videoTitle) {
+    const encodedVideo = encodeURIComponent(videoFile);
+    const encodedTitle = encodeURIComponent(videoTitle);
+    window.location.href = `player.html?video=${encodedVideo}&title=${encodedTitle}`;
+}
+</script>
 <body>
     <nav>
         <img src="src/src.png" alt="网站Logo" style="height: 100px;">
@@ -60,13 +68,17 @@
     </nav>
     <div class="container">
         <div class="video-container">
-            <div class="video-player" onclick="window.location.href='player.html?video=counting%20stars(%E5%B8%A6%E6%AD%8C%E8%AF%8D)-OneRepublic.mp4&title=Counting%20Stars%20(%E5%B8%A6%E6%AD%8C%E8%AF%8D%E7%89%88%E6%9C%AC)'">
+            <div class="video-player" onclick="playVideo('Counting Stars 带歌词.mp4', 'Counting Stars (带歌词版本)')">
                 <h2 class="video-title">Counting Stars (带歌词版本)</h2>
                 <img class="video-thumbnail" src="src/src2.jpg" alt="Counting Stars (带歌词版本)">
             </div>
-            <div class="video-player" onclick="window.location.href='player.html?video=counting%20stars-OneRepublic.mp4&title=Counting%20Stars%20(MV)'">
+            <div class="video-player" onclick="playVideo('counting stars-OneRepublic.mp4', 'Counting Stars (MV)')">
                 <h2 class="video-title">Counting Stars (MV)</h2>
                 <img class="video-thumbnail" src="src/src.jpg" alt="Counting Stars (MV)">
+            </div>
+            <div class="video-player" onclick="playVideo('Counting Stars无人声.mp4', 'Counting Stars (无人声版本)')">
+                <h2 class="video-title">Counting Stars (无人声版本)</h2>
+                <img class="video-thumbnail" src="src/src3.jpg" alt="Counting Stars (无人声版本)">
             </div>
         </div>
     </div>

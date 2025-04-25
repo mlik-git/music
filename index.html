@@ -6,8 +6,55 @@
     <title>music-online</title>
     <link rel="icon" href="src/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
-
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .search-container {
+            position: relative;
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: rgba(255, 255, 255, 0);
+        }
+        #search-input {
+            width: 90%; /* 留出两侧空白增强响应式布局 */
+            padding: 12px 45px 12px 15px; /* 优化触控区域比例 */
+            max-width: 800px; /* 限制最大宽度保持内容可读性 */
+            border: 2px solid rgba(224, 224, 224, 0.5);
+            border-radius: 25px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0);
+            /*color: fff;8*/
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        #search-input:focus {
+            border-color: #4a90e2;
+            box-shadow: 0 4px 15px rgba(74, 145, 226, 0);
+            outline: none;
+        }
+        .search-container::after {
+            content: '\f002';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255,255,255,0.7);
+            font-size: 18px;
+            pointer-events: none;
+            transition: color 0.3s ease;
+        }
+        .search-container:focus-within::after {
+            color: #4a90e2;
+        }
+        #search-input::placeholder {
+            color: #999;
+            transition: opacity 0.3s ease;
+        }
+        #search-input:focus::placeholder {
+            opacity: 0.7;
+        }
+    </style>
 </head>
 <body>
     <nav>
@@ -24,7 +71,7 @@
         <div class="player">
             <h1>音乐下载播放站</h1>
             <div class="search-container">
-                <input type="text" id="search-input" placeholder="搜索歌曲...">
+                <input type="text" id="search-input" placeholder="输入歌曲名称或歌手搜索...">
             </div>
             <div class="song-list" id="song-list">
                 <!-- 歌曲列表将通过JavaScript动态生成 -->
@@ -100,7 +147,7 @@
                 '烟花易冷-周杰伦.mp3',
                 '爱情转移-陈奕迅.mp3',
                 '爱的魔法-金莎.mp3',
-                '牧马城市-毛不易.mp3',
+                '牧马城市-毛Easy.mp3',
                 '王妃-萧敬腾.mp3',
                 '过火-张信哲.mp3',
                 '玫瑰花的葬礼-许嵩.mp3',
