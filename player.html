@@ -170,7 +170,7 @@
     </style>
 </head>
 <body>
-    <button class="back-button" onclick="window.location.href='index.html'">返回</button>
+    <button class="back-button">返回</button>
     <div class="background-selector">
         <label class="radio-label">
             <input type="radio" name="background-type" value="img">
@@ -200,6 +200,9 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.back-button').addEventListener('click', () => {
+        window.location.href = 'index.html';
+    });
             const urlParams = new URLSearchParams(window.location.search);
             const songFile = urlParams.get('song');
             const songName = urlParams.get('name');
@@ -379,3 +382,6 @@
     </script>
 </body>
 </html>
+
+
+
